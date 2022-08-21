@@ -1,0 +1,130 @@
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+      <div class="container text-center py-5">
+          <h1 class="display-4 text-white animated slideInDown mb-3">Projects</h1>
+
+      </div>
+  </div>
+  <!-- Page Header End -->
+
+
+
+
+
+<!-- Service Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+      <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+          <h6 class="section-title bg-white text-center text-primary px-3">Projects</h6>
+          <h1 class="display-6 mb-4">We Focuse On Making The Best In All Sectors</h1>
+      </div>
+      <div class="row g-4">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" *ngFor="let project of projects;" >
+            <!-- {{this.move(project.workPercentage)}} -->
+            <!-- <p>{{obj.name}}</p> -->
+              <a class="service-item d-block rounded text-center h-100 p-4">
+                  <img class="img-fluid rounded mb-4" src="assets/img/service-5.jpg" alt="">
+                  <h3 class="mb-0 head">{{project.pName}}</h3>
+
+                  <!-- <p >Service Name</p> -->
+                  <div class="row">
+                    <div class="col-md-3">
+
+                    <!-- <label for="description" >Description</label> -->
+                  </div>
+                </div>
+                <div>
+
+                 <p class="all-description"> {{project.description}} </p>
+
+                </div>
+
+                <!-- <textarea type="text" id="description" disabled [value]="project.description" class="form-control"> </textarea> -->
+                <br>
+                <div class="col-12">
+                  <div class="skill">
+                      <div class="d-flex justify-content-between">
+                          <p class="mb-2 all-description">Project Progress</p>
+                          <p *ngIf="project.workPercentage == null" class="mb-2 all-description">0%</p>
+                          <p *ngIf="project.workPercentage != null" class="mb-2 all-description">{{project.workPercentage}}%</p>
+
+                      </div>
+                      <div *ngIf="project.workPercentage == null" class="progress-bar-container" >
+                        <div  class="progress-bar {{color}}"
+                         [ngStyle]="{'width': 1+ '%'}">
+                        </div>
+                     </div>
+                          <div *ngIf="project.workPercentage != null" class="progress-bar-container">
+                            <div class="progress-bar {{color}}"
+                             [ngStyle]="{'width': project.workPercentage+ '%'}">
+                            </div>
+                         </div>
+
+                  </div>
+              </div>
+                <br>
+                <div class="col-12 text-center">
+                  <button *ngIf="project.completedModule != null" class="btn btn-primary " data-bs-toggle="modal" (click)="viewDetail(project.completedModule)" data-bs-target="#exampleModal">View Detail</button>
+                  <!-- rounded-pill py-3 px-5 -->
+              </div>
+                <!-- <div class="row">
+                  <div class="col-md-5">
+
+                    <a class="btn btn-primary" routerLink="/user/create_service">View Detail</a>
+                  </div>
+                </div> -->
+
+              </a>
+
+
+          </div>
+
+      </div>
+  </div>
+</div>
+<!-- Service End -->
+
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <!-- Spinner Start -->
+  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
+    <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
+</div>
+<!-- Spinner End -->
+  </ngx-spinner>
+
+
+  <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+          <h6 class="section-title bg-white text-center text-primary px-3">Completed Module</h6>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+            <ul *ngFor="let module of modules;">
+              <div class="row" >
+                <div class="col-md-4">
+              <li>{{module}}</li>
+              </div>
+              </div>
+            </ul>
+
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>!-->
+    </div>
+  </div>
+</div>
+

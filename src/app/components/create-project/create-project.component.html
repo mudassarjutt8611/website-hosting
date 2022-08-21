@@ -1,0 +1,80 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container text-center py-5">
+      <h1 class="display-4 text-white animated slideInDown mb-3">Services</h1>
+      <nav aria-label="breadcrumb animated slideInDown">
+          <ol class="breadcrumb justify-content-center mb-0">
+              <li class="breadcrumb-item"><a class="text-white" >Home</a></li>
+              <li class="breadcrumb-item"><a class="text-white" >Pages</a></li>
+              <li class="breadcrumb-item text-primary active" aria-current="page">Services</li>
+          </ol>
+      </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+
+<div class="container-xxl py-5">
+  <div class="container">
+      <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+          <h6 class="section-title bg-white text-center text-primary px-3">Add Your Project</h6>
+          <!-- <h1 class="display-6 mb-4">If You Have Any Query, Please Feel Free Contact Us</h1> -->
+      </div>
+      <div class="row g-0 justify-content-center">
+          <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.5s">
+              <!-- <p class="text-center mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p> -->
+              <form [formGroup]="createProject">
+                  <div class="row g-3">
+                      <div class="col-md-6">
+                          <div class="form-floating">
+                              <input type="text" class="form-control"  formControlName="pName" id="name" placeholder="Project Name">
+                              <label for="name">Project Name</label>
+                              <div *ngIf="createProjectControl['pName'].touched && createProjectControl['pName'].invalid" class="text-danger">
+                                <div *ngIf="createProjectControl['pName'].errors">Project Name is required.</div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-floating">
+                              <input type="file" #imageInput accept=".pdf,.doc" class="form-control" formControlName="projectFile" id="email" (change)="handleImagetoInput(imageInput)">
+                              <label for="email">Upload SRS</label>
+                              <div *ngIf="createProjectControl['projectFile'].touched && createProjectControl['projectFile'].invalid" class="text-danger">
+                                <div *ngIf="createProjectControl['projectFile'].errors">Project File is required.</div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- <div class="col-12">
+                          <div class="form-floating">
+                              <input type="text" class="form-control" id="subject" placeholder="Subject">
+                              <label for="subject">Subject</label>
+                          </div>
+                      </div> -->
+                      <div class="col-12">
+                          <div class="form-floating">
+                              <textarea class="form-control" formControlName="description" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
+                              <label for="message">Description</label>
+                              <div *ngIf="createProjectControl['description'].touched && createProjectControl['description'].invalid" class="text-danger">
+                                <div *ngIf="createProjectControl['description'].errors">Description is required.</div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12 text-center">
+                          <button class="btn btn-primary rounded-pill py-3 px-5" [disabled]="createProject.invalid" (click)="addProject()">Submit</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <!-- Spinner Start -->
+  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
+    <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
+</div>
+<!-- Spinner End -->
+  </ngx-spinner>

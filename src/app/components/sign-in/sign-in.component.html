@@ -1,0 +1,44 @@
+<div class="card" style="width: 30rem; margin-top: 10%;margin-bottom: 10%; margin-left: 420px;padding: 4%;box-shadow: 10px 10px 5px -5px rgba(130,122,122,0.75);">
+  <div class="card-body">
+    <h5 class="card-title text-center">Sign In</h5>
+
+    <form [formGroup]="signinForm">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email">
+            <label for="email">Email</label>
+            <div *ngIf="signinFormControl['email'].touched && signinFormControl['email'].invalid" class="text-danger">
+              <div *ngIf="signinFormControl['email'].errors">Email is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-floating">
+            <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+            <label for="password">Password</label>
+            <div *ngIf="signinFormControl['password'].touched && signinFormControl['password'].invalid" class="text-danger">
+              <div *ngIf="signinFormControl['password'].errors">Passowrd is required.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-6">
+          <button class=" btn btn-primary" style="margin-top: 2%;" [disabled]="signinForm.invalid" (click)="onSubmit()">Sign In</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <!-- Spinner Start -->
+  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
+    <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
+</div>
+<!-- Spinner End -->
+  </ngx-spinner>
